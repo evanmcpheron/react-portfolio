@@ -1,7 +1,7 @@
 {
-  "name": "react-redux-router",
+  "name": "evan-mcpheron-react-portfolio",
   "version": "1.0.0",
-  "description": "Basic skeleton codebase for React/Redux/Router applications.",
+  "description": "Professional portfolio app build in ReactJS",
   "scripts": {
     "preinstall": "npm set audit false",
     "start": "webpack-dev-server --config webpack/dev.config.js --watch",
@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:bottega-code-school/js-builder.git"
+    "url": "https://github.com/evanmcpheron/react-portfolio.git"
   },
   "keywords": [
     "es6",
@@ -25,12 +25,12 @@
     "sass",
     "css module"
   ],
-  "author": "Your Name Here",
+  "author": "Evan McPheron",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/bottega-code-school/js-builder/issues"
+    "url": ""
   },
-  "homepage": "https://github.com/bottega-code-school/js-builder",
+  "homepage": "",
   "dependencies": {
     "ajv": "^5.5.2",
     "autoprefixer": "^9.1.0",
@@ -54,6 +54,7 @@
     "file-loader": "^1.1.11",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
+    "moment": "2.22.2",
     "node-sass": "^4.9.2",
     "postcss-loader": "^2.1.6",
     "react": "16.8.0",

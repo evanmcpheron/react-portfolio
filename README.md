@@ -1,1 +1,1 @@
-# React/Redux/Router Starter Project
+# Evan McPheron;s ReactJS Portfolio

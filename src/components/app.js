@@ -1,4 +1,9 @@
 import React, { Component } from 'react';
+import moment from 'moment';
+
+
+const now = moment().format('LT');
+
 
 export default class App extends Component {
   render() {
@@ -6,6 +11,7 @@ export default class App extends Component {
       <div className='app'>
         <h1>Evan McPheron</h1>
         <h4>Websites the way you want them</h4>
+    <p>{now}</p>
       </div>
     );
   }

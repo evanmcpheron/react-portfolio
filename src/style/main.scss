@@ -1,3 +1,5 @@
+@import './variables.scss';
+
 html {
     font-size: 10px; // 1rem is 10px
 }
@@ -8,10 +10,12 @@ html {
     margin: 0;
     padding: 0;
     box-sizing: inherit;
-    font-family: 'montserrat';
+    font-family: 'Roboto';
 }
 
 body {
+    background: $black;
+    color: $white;
     overflow-x: hidden;
     font-weight: normal;
 
@@ -22,7 +26,7 @@ body {
 }
 
 .app {
-    margin-top: 2rem;
     display: grid;
     justify-items: center;
 }
+
