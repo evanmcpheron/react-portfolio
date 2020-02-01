@@ -1,0 +1,40 @@
+@mixin base-btn {
+    cursor: pointer;
+    height: 4.2rem;
+    font-size: 1.5rem;
+    font-weight: 400;
+    border: 1px solid transparent;
+    background-color: $teal;
+    color: $white;
+    transition: all .3s ease;
+
+    &:active, &:focus {
+        outline: none;
+    }
+
+    &:hover {
+        background-color: $dark-teal;
+    }
+}
+
+@mixin input-element {
+    input {
+        font-family: "Roboto";
+        color: $charcoal;
+        padding: .5rem 0;
+        width: 100%;
+        border-top: 0;
+        border-left: 0;
+        border-right: 0;
+        border-bottom: 2px solid $teal;
+        background-color: transparent;
+        transition: .5s all ease;
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+        outline: none;
+
+        &:focus {
+            border-bottom: 2px solid $dark-teal;
+        }
+    }
+}

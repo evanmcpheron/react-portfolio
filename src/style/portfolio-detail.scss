@@ -1,0 +1,45 @@
+.portfolio-detail-wrapper {
+    width: 100vw;
+
+    .banner {
+        height: 300px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 15px 20px rgba(0,0,0,.2);
+    }
+
+    .portfolio-detail-description-wrapper {
+        text-align: center;
+        margin-top: 4rem;
+        display: flex;
+        justify-content: center;
+
+        .description {
+            width: 700px;
+            font-size: 2rem;
+            margin-bottom: 5rem;
+        }
+    }
+
+    .bottom-content-wrapper {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .site-link {
+            padding: 2rem;
+            background: $teal;
+            border-radius: 3px;
+            text-decoration: none;
+            color: $white;
+            transition: all .4s ease;
+            font-size: 1.75rem;
+
+            &:hover {
+                background: $dark-teal;
+            }
+        }
+    }
+}

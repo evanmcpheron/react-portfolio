@@ -1,0 +1,62 @@
+.nav-wrapper {
+    height: 2rem;
+    display: flex;
+    justify-content: space-between;
+    padding: 3.5rem;
+    background: $white;
+    
+    .left-side {
+        display: flex;
+    }
+
+    .right-side {
+        color: $black;
+        font-size: 1.75rem;
+        font-weight: 700;
+    }
+
+    .nav-link-wrapper {
+        height: 2rem;
+        font-size: 1.75rem;
+        font-weight: 700;
+        border-bottom: 2px solid transparent;
+        margin-right: 2rem;
+        text-transform: uppercase;
+        transition: all .5s ease;
+
+        a {
+            text-decoration: none;
+            color: $black;
+            transition: all .5s ease;
+            
+            &:hover {
+                color: $purple;
+            }
+        }
+
+        &:hover {
+            border-bottom: 2px solid $black;
+        }
+
+        .active {
+            border-bottom: 2px solid $black;
+            color: $purple;
+        }
+    }
+
+    .logout-btn {
+        cursor: pointer;
+    }
+}
+
+.sign-icon {
+    font-size: 1.5rem;
+    color: $teal;
+    margin-left: 1rem;
+    transition: all .5s ease;
+
+    &:hover {
+        color: $dark-teal;
+        font-size: 1.7rem;
+    }
+}

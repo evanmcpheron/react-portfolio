@@ -1,32 +1,24 @@
+//BASE STYLES
 @import './variables.scss';
+@import './mixins.scss';
+@import './base.scss';
 
-html {
-    font-size: 10px; // 1rem is 10px
-}
+//REUSABLE
+@import './forms.scss';
+@import './button.scss';
+@import './grid.scss';
+@import './loaders.scss';
 
-*,
-*::after,
-*::before {
-    margin: 0;
-    padding: 0;
-    box-sizing: inherit;
-    font-family: 'Roboto';
-}
-
-body {
-    background: $black;
-    color: $white;
-    overflow-x: hidden;
-    font-weight: normal;
-
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-rendering: optimizeLegibility;
-    -webkit-tap-highlight-color: transparent;
-}
-
-.app {
-    display: grid;
-    justify-items: center;
-}
-
+//PAGES
+@import './navigation.scss';
+@import './portfolio.scss';
+@import './auth.scss';
+@import './portfolio-manager.scss';
+@import './portfolio-sidebar.scss';
+@import './portfolio-form.scss';
+@import './blog.scss';
+@import './blog-form.scss';
+@import './react-draft-wysiwyg.scss';
+@import './about.scss';
+@import './layout.scss';
+@import './portfolio-detail.scss';

@@ -1,0 +1,58 @@
+.portfolio-form-wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 2rem;
+    padding: 4rem;
+    @include input-element();
+    input {
+        margin-bottom: 0;
+    }
+
+ 
+}
+
+.portfolio-submit-btn {
+    background: $teal;
+    border: 2px solid $dark-teal;
+    border-radius: 3px;
+    color: $dark-teal;
+    font-size: 2rem;
+    padding: 1rem;
+    font-weight: 700;
+    transition: all .4s ease;
+    cursor: pointer;
+
+    &:hover {
+        background: $dark-teal;
+        color: $teal;
+        border: $teal 2px solid;
+    }
+}
+
+.portfolio-manager-image-wrapper {
+    position: relative;
+    img {
+        width: 100%;
+        height: 120px;
+        object-fit: cover;
+        border-radius: 5px;
+    }
+
+    .image-removal-link {
+        height: auto;
+        width: auto;
+        position: absolute;
+        bottom: -.5rem;
+        right: -.5rem;
+        padding: 1rem;
+        background: $red;
+        color: $white;
+        border-radius: 50%;
+        a {
+
+            font-weight: 700;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+    }
+}

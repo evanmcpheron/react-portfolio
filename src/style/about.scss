@@ -1,0 +1,24 @@
+.about-page-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 4rem;
+
+    .about-img {
+        position: relative;
+        height: calc(100vh - 9rem);
+        
+        img {
+            position: absolute;
+            right: 0;
+            top: 0;
+            height: 100%;
+        }
+    }
+
+    .about-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+}

@@ -1,0 +1,31 @@
+.auth-page-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: calc(100vh - 9rem);
+    position: relative;
+
+    .left-column {
+        background-size: cover;
+        background-position: top;
+    }
+
+    .right-column {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: $white;
+        color: $black;
+    }
+
+    .auth-form-wrapper {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 2rem;
+        padding: 1rem 0;
+    }
+
+    @include input-element();
+    input {
+        background-color: transparent !important;
+    }
+}

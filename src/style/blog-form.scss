@@ -1,0 +1,25 @@
+.blog-form-wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 2rem;
+    padding: 4rem;
+    background: $white;
+
+    @include input-element();
+    input {
+        margin-bottom: 0;
+    }
+}
+
+.DraftEditor-root {
+    height: 25vh !important;
+    margin-top: 2rem;
+}
+
+.DraftEditor-editorContainer {
+    padding: 0 1rem;
+}
+
+.rdw-image-modal {
+    left: -20rem;
+}

@@ -1,0 +1,19 @@
+textarea {
+    border: 2px solid $teal;
+    background-color: transparent;
+    font-size: 1.5rem;
+    height: 100px;
+    outline: none;
+    padding: 1rem;
+    resize: none;
+}
+
+.select-element {
+    border: 2px solid $teal;
+    font-size: 1.5rem;
+    width: 100%;
+    border-radius: 3px;
+    overflow: hidden;
+    background-color: transparent;
+    outline: none;
+}

@@ -1,0 +1,43 @@
+.portfolio-manager-wrapper {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+
+    .left-column {
+        background: darken($white, 4%);
+        color: $black;
+        height: calc(100vh - 9rem);
+        position: sticky;
+        top: 0;
+
+
+    }
+}
+
+.port-item-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1rem 0;
+
+    .icon {
+        font-size: 1.75rem;
+        cursor: pointer;
+        margin-left: 1rem;
+
+        &-trash{
+            color:$red;
+            transition: color .5s ease;
+            &:hover {
+                color: lighten($red, 20%);
+            }
+        }
+
+        &-edit {
+            color: $white;
+            transition: color .5s ease;
+            &:hover {
+                color: $blue;
+            }
+        }
+    }
+}
