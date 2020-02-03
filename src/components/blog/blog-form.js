@@ -159,13 +159,17 @@ export default class BlogForm extends Component {
                         value={this.state.title}
                     />
 
-                    <input
+                    <select
                         type="text"
                         onChange={this.handleChange}
                         name="blog_status"
                         placeholder="Status"
                         value={this.state.blog_status}
-                    />
+                    >
+                        <option value="">Choose Category</option>
+						<option value="published">Published</option>
+						<option value="draft">Draft</option>
+                    </select>
                 </div>
 
                 <div className="one-col" style={{ color: "#222" }}>
