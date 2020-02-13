@@ -13,6 +13,12 @@ import PortfolioManager from "./pages/portfolio-manager";
 import PortfolioDetail from "./portfolio/portfolio-detail";
 import Auth from "./pages/auth";
 import NoMatch from "./catch-all";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+    faLinkedin,
+    faTwitter,
+    faGithub
+} from "@fortawesome/free-brands-svg-icons";
 
 export default class App extends Component {
     constructor(props) {
@@ -21,7 +27,8 @@ export default class App extends Component {
         Icons();
 
         this.state = {
-            loggedInStatus: "NOT_LOGGED_IN"
+            loggedInStatus: "NOT_LOGGED_IN",
+            mobileMode: "DESKTOP_MODE"
         };
 
         this.handleSuccessfulLogin = this.handleSuccessfulLogin.bind(this);
@@ -91,7 +98,44 @@ export default class App extends Component {
         ];
     }
 
+    // mobileModes() {
+    //     if (window.innerWidth <= 900) {
+    //         this.setState({
+    //             mobileMode: "MOBILE_MODE"
+    //         });
+    //     } else {
+    //         this.setState({
+    //             mobileMode: "DESKTOP_MODE"
+    //         })
+    //     }
+    // }
+
+    updateDimensions() {
+        if(window.innerWidth <= 900) {
+          this.setState({ mobileMode: "MOBILE_MODE" });
+        } else {
+          this.setState({ mobileMode: "DESKTOP_MODE" });
+        }
+      }
+
+    componentDidMount() {
+        this.updateDimensions();
+        window.addEventListener("resize", this.updateDimensions.bind(this));
+      }
+    
+     
+      componentWillUnmount() {
+        window.removeEventListener("resize", this.updateDimensions.bind(this));
+      }
+
     render() {
+        const iconStyle = {
+            position: "fixed",
+            zIndex: "999",
+            bottom: "2rem",
+            right: "2rem"
+        };
+
         return (
             <div className="container">
                 <Router>
@@ -99,7 +143,32 @@ export default class App extends Component {
                         <NavigationContainer
                             loggedInStatus={this.state.loggedInStatus}
                             handleSuccessfulLogout={this.handleSuccessfulLogout}
+                            mobileMode={this.state.mobileMode}
                         />
+
+                        <div style={iconStyle}>
+                            <a
+                                href="https://github.com/evanmcpheron"
+                                target="_blank"
+                                className="social-media-link"
+                            >
+                                <FontAwesomeIcon icon={faGithub} />
+                            </a>
+                            <a
+                                href="https://www.linkedin.com/in/evan-mcpheron/"
+                                target="_blank"
+                                className="social-media-link"
+                            >
+                                <FontAwesomeIcon icon={faLinkedin} />
+                            </a>
+                            <a
+                                href="https://twitter.com/EvanMcPheron"
+                                target="_blank"
+                                className="social-media-link"
+                            >
+                                <FontAwesomeIcon icon={faTwitter} />
+                            </a>
+                        </div>
 
                         <Switch>
                             <Route exact path="/" component={Home} />

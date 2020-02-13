@@ -7,7 +7,7 @@ export default function() {
             <div className="about-img">
                 <img src={profileImg}/>
             </div>
-            <div className="about-content">
+            <div className="about-content" style={{fontSize: "2rem"}}>
                 <h1>About</h1>
                 <p>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.

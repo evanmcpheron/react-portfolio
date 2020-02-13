@@ -30,7 +30,7 @@
             transition: all .5s ease;
             
             &:hover {
-                color: $purple;
+                color: $teal;
             }
         }
 
@@ -40,7 +40,7 @@
 
         .active {
             border-bottom: 2px solid $black;
-            color: $purple;
+            color: $teal;
         }
     }
 
@@ -60,3 +60,37 @@
         font-size: 1.7rem;
     }
 }
+
+
+
+.social-media-link {
+    color: $teal;
+    font-size: 3rem;
+    margin-right: 3rem;
+}
+
+.navigation-component-wrapper {
+    div {
+        transition: top .5s ease;
+    }
+
+}
+
+.mobile {
+    color: $black;
+    margin-top: 2rem;
+
+    a {
+        color: $black;
+        text-decoration: none;
+
+        &:visited {
+            color: black;
+        }
+
+        &:hover {
+            color: $teal;
+        }
+    }
+}
+

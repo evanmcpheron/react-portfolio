@@ -1,0 +1,25 @@
+.contact-page-wrapper {
+    height: calc(100vh-9rem);
+    overflow-y: hidden;
+}
+
+form {
+    margin-top: 3rem;
+}
+
+@media only screen and (max-width: 900px) {
+    .content-page-wrapper {
+        grid-template-rows: 1fr 1fr;
+        grid-template-columns: 1fr;
+        height: 100vh;
+
+        .right-column {
+            padding: 0;
+
+            .select-element,
+            textarea {
+                box-sizing: border-box;
+            }
+        }
+    }
+  }
