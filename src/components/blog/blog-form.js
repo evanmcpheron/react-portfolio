@@ -166,7 +166,7 @@ export default class BlogForm extends Component {
                         placeholder="Status"
                         value={this.state.blog_status}
                     >
-                        <option value="">Choose Category</option>
+                        <option value="">Choose Status</option>
 						<option value="published">Published</option>
 						<option value="draft">Draft</option>
                     </select>

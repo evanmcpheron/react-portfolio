@@ -98,18 +98,6 @@ export default class App extends Component {
         ];
     }
 
-    // mobileModes() {
-    //     if (window.innerWidth <= 900) {
-    //         this.setState({
-    //             mobileMode: "MOBILE_MODE"
-    //         });
-    //     } else {
-    //         this.setState({
-    //             mobileMode: "DESKTOP_MODE"
-    //         })
-    //     }
-    // }
-
     updateDimensions() {
         if(window.innerWidth <= 900) {
           this.setState({ mobileMode: "MOBILE_MODE" });

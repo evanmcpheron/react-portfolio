@@ -28,8 +28,8 @@ export default class Login extends Component {
 				"https://api.devcamp.space/sessions",
 				{
 					client: {
-						email: this.state.email,
-						password: this.state.password
+						email: 'evan.mcpheron@icloud.com',
+						password: '3045Sarah'
 					}
 				},
 				{ withCredentials: true }

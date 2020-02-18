@@ -220,7 +220,7 @@ class NavigationComponent extends Component {
                                         background: "#dfdfdf",
                                         textAlign: "center",
                                         position: "fixed",
-                                        top: "-300px",
+                                        top: "-400px",
                                         left: "0",
                                         width: "100vw",
                                         zIndex: "500"
