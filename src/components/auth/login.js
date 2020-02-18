@@ -64,7 +64,7 @@ export default class Login extends Component {
 				<form onSubmit={this.handleSubmit}>
 					<div className="auth-form-wrapper">
 						<input
-							type="email"
+							type="text"
 							name="email"
 							placeholder="Your email"
 							value={this.state.email}
