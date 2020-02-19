@@ -1,4 +1,4 @@
-#REACT PORTFOLIO
+# REACT PORTFOLIO
 
 [HOME PAGE](https://www.emcpheron.com "HOME PAGE")
 
