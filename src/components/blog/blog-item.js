@@ -7,7 +7,7 @@ const BlogItem = props => {
 	const { id, blog_status, content, title, feature_image_url } = props.blogItem;
 	
 	return (
-		<div style={{paddingTop: "5rem"}}>
+		<div>
 			<Link to={`/b/${id}`}>
 				<h1>{title}</h1>
 			</Link>
