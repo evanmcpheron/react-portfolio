@@ -3,6 +3,12 @@ import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import BlogItem from "../blog/blog-item";
 import BlogModal from "../modals/blog-modal";
+import ReactGA from 'react-ga';
+
+
+ReactGA.initialize('UA-80246531-2');
+
+ReactGA.pageview('/Blog');
 
 class Blog extends Component {
     constructor() {

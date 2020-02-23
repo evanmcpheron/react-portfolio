@@ -1,6 +1,12 @@
 import React, { Component } from "react";
 import Login from "../auth/login";
 import loginImg from "../../../static/assets/img/login.jpg";
+import ReactGA from 'react-ga';
+
+
+ReactGA.initialize('UA-80246531-2');
+
+ReactGA.pageview('/Auth');
 
 export default class Auth extends Component {
   constructor(props) {
