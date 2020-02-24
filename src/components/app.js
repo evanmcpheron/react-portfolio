@@ -1,40 +1,40 @@
-import React, { Component } from "react";
-import ReactGA from "react-ga";
-import { Route, Switch, Router } from "react-router-dom";
-import axios from "axios";
-import Icons from "../helpers/icons";
+import React, { Component } from 'react';
+import ReactGA from 'react-ga';
+import { Route, Switch, Router } from 'react-router-dom';
+import axios from 'axios';
+import Icons from '../helpers/icons';
 
-import NavigationContainer from "./navigation/navigation-container";
-import Home from "./pages/home";
-import About from "./pages/about";
-import Contact from "./pages/contact";
-import Blog from "./pages/blog";
-import BlogDetail from "./pages/blog-detail";
-import PortfolioManager from "./pages/portfolio-manager";
-import PortfolioDetail from "./portfolio/portfolio-detail";
-import Auth from "./pages/auth";
-import NoMatch from "./catch-all";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import NavigationContainer from './navigation/navigation-container';
+import Home from './pages/home';
+import About from './pages/about';
+import Contact from './pages/contact';
+import Blog from './pages/blog';
+import BlogDetail from './pages/blog-detail';
+import PortfolioManager from './pages/portfolio-manager';
+import PortfolioDetail from './portfolio/portfolio-detail';
+import Auth from './pages/auth';
+import NoMatch from './catch-all';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faLinkedin,
     faTwitter,
     faGithub
-} from "@fortawesome/free-brands-svg-icons";
-import { createBrowserHistory } from "history";
+} from '@fortawesome/free-brands-svg-icons';
+import { createBrowserHistory } from 'history';
 
-ReactGA.initialize("UA-80246531-3", {
-    debug: true,
+ReactGA.initialize('UA-80246531-3', {
+    debug: false,
     titleCase: false,
     gaOptions: {
-      userId: 123
-    }});
+        userId: 123
+    }
+});
 
 const history = createBrowserHistory();
 history.listen(location => {
-  ReactGA.set({ page: location.pathname });
-  ReactGA.pageview(location.pathname);
+    ReactGA.set({ page: location.pathname });
+    ReactGA.pageview(location.pathname);
 });
-
 
 export default class App extends Component {
     constructor(props) {
@@ -43,8 +43,7 @@ export default class App extends Component {
         Icons();
 
         this.state = {
-            loggedInStatus: "NOT_LOGGED_IN",
-            mobileMode: "DESKTOP_MODE"
+            loggedInStatus: 'NOT_LOGGED_IN'
         };
 
         this.handleSuccessfulLogin = this.handleSuccessfulLogin.bind(this);
@@ -58,25 +57,25 @@ export default class App extends Component {
 
     handleSuccessfulLogin() {
         this.setState({
-            loggedInStatus: "LOGGED_IN"
+            loggedInStatus: 'LOGGED_IN'
         });
     }
 
     handleUnsuccessfulLogin() {
         this.setState({
-            loggedInStatus: "NOT_LOGGED_IN"
+            loggedInStatus: 'NOT_LOGGED_IN'
         });
     }
 
     handleSuccessfulLogout() {
         this.setState({
-            loggedInStatus: "NOT_LOGGED_IN"
+            loggedInStatus: 'NOT_LOGGED_IN'
         });
     }
 
     checkLoginStatus() {
         return axios
-            .get("https://api.devcamp.space/logged_in", {
+            .get('https://api.devcamp.space/logged_in', {
                 withCredentials: true
             })
             .then(response => {
@@ -87,20 +86,20 @@ export default class App extends Component {
                 // If loggedIn status NOT_LOGGED_IN => update state
                 // If not loggedIn and status LOGGED_IN => update state
 
-                if (loggedIn && loggedInStatus === "LOGGED_IN") {
+                if (loggedIn && loggedInStatus === 'LOGGED_IN') {
                     return loggedIn;
-                } else if (loggedIn && loggedInStatus === "NOT_LOGGED_IN") {
+                } else if (loggedIn && loggedInStatus === 'NOT_LOGGED_IN') {
                     this.setState({
-                        loggedInStatus: "LOGGED_IN"
+                        loggedInStatus: 'LOGGED_IN'
                     });
-                } else if (!loggedIn && loggedInStatus === "LOGGED_IN") {
+                } else if (!loggedIn && loggedInStatus === 'LOGGED_IN') {
                     this.setState({
-                        loggedInStatus: "NOT_LOGGED_IN"
+                        loggedInStatus: 'NOT_LOGGED_IN'
                     });
                 }
             })
             .catch(error => {
-                console.log("Error", error);
+                console.log('Error', error);
             });
     }
 
@@ -118,45 +117,25 @@ export default class App extends Component {
         ];
     }
 
-    updateDimensions() {
-        if(window.innerWidth <= 900) {
-          this.setState({ mobileMode: "MOBILE_MODE" });
-        } else {
-          this.setState({ mobileMode: "DESKTOP_MODE" });
-        }
-      }
-
     componentDidMount() {
-        this.updateDimensions();
-        window.addEventListener("resize", this.updateDimensions.bind(this));
-      }
-    
-     
-      componentWillUnmount() {
-        window.removeEventListener("resize", this.updateDimensions.bind(this));
-      }
-
-      componentDidMount() {
         ReactGA.pageview(window.location.pathname);
-      }
+    }
 
     render() {
         const iconStyle = {
-            position: "fixed",
-            zIndex: "999",
-            bottom: "2rem",
-            right: "2rem"
+            position: 'fixed',
+            zIndex: '999',
+            bottom: '2rem',
+            right: '2rem'
         };
 
         return (
-
             <div className="container">
                 <Router history={history}>
                     <div>
                         <NavigationContainer
                             loggedInStatus={this.state.loggedInStatus}
                             handleSuccessfulLogout={this.handleSuccessfulLogout}
-                            mobileMode={this.state.mobileMode}
                         />
 
                         <div style={iconStyle}>
@@ -229,7 +208,7 @@ export default class App extends Component {
 
                             <Route path="/contact" component={Contact} />
 
-                            {this.state.loggedInStatus === "LOGGED_IN"
+                            {this.state.loggedInStatus === 'LOGGED_IN'
                                 ? this.authorizedPages()
                                 : null}
 

@@ -1,22 +1,22 @@
-import React, { Component } from "react";
-import { NavLink } from "react-router-dom";
-import axios from "axios";
-import { withRouter } from "react-router";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
+import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
+import axios from 'axios';
+import { withRouter } from 'react-router';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
 
 class NavigationComponent extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            open: false
+            open: false,
+            mobileMode: 'DESKTOP_MODE'
         };
 
         this.handleSignOut = this.handleSignOut.bind(this);
         this.hideNav = this.hideNav.bind(this);
     }
-    mobile = this.props.mobileMode;
 
     hideNav() {
         this.setState(prevState => ({
@@ -36,55 +36,73 @@ class NavigationComponent extends Component {
 
     handleSignOut = () => {
         axios
-            .delete("https://api.devcamp.space/logout", {
+            .delete('https://api.devcamp.space/logout', {
                 withCredentials: true
             })
             .then(response => {
                 if (response.status === 200) {
-                    this.props.history.push("/");
+                    this.props.history.push('/');
                     this.props.handleSuccessfulLogout();
                 }
                 // return data;
             })
             .catch(error => {
-                console.log("LOGOUT ERROR", error);
+                console.log('LOGOUT ERROR', error);
             });
     };
 
-  
+    updateDimensions() {
+        if (window.innerWidth <= 900) {
+            this.setState({mobileMode: "MOBILE_MODE"})
+            console.log('mobile mode');
+        } else {
+            this.setState({mobileMode: "DESKTOP_MODE"})
+            console.log('desktop mode');
+        }
+    } 
 
-    isMobile = () => {};
+    componentDidMount() {
+        this.updateDimensions();
+        window.addEventListener("resize", this.updateDimensions.bind(this));
+      }
+    
+      componentWillUnmount() {
+        window.removeEventListener("resize", this.updateDimensions.bind(this));
+      }
+
+    
 
     mobileStyleContainer = {
-        fontSize: "2.75rem",
-        background: "#dfdfdf",
-        textAlign: "center",
-        position: "fixed",
-        top: "200px",
-        left: "0",
-        width: "100vw",
-        zIndex: "500"
+        fontSize: '2.75rem',
+        background: '#dfdfdf',
+        textAlign: 'center',
+        position: 'fixed',
+        top: '200px',
+        left: '0',
+        width: '100vw',
+        zIndex: '500'
     };
 
     render() {
+        
         return (
             <div className="navigation-component-wrapper">
                 {/* NAVIGATION OPEN */}
-                {this.props.mobileMode === "MOBILE_MODE" ? (
-                    <div style={{ position: "relative" }}>
+                {this.state.mobileMode === 'MOBILE_MODE' ? (
+                    <div style={{ position: 'relative' }}>
                         {this.state.open ? (
                             <FontAwesomeIcon
                                 // OPEN ICON
                                 icon={faBars}
                                 style={{
-                                    zIndex: "999",
-                                    position: "fixed",
-                                    fontSize: "3rem",
-                                    color: "#dfdfdf",
-                                    cursor: "pointer",
-                                    marginTop: "2rem",
-                                    marginLeft: "2rem",
-                                    color: "#222"
+                                    zIndex: '999',
+                                    position: 'fixed',
+                                    fontSize: '3rem',
+                                    color: '#dfdfdf',
+                                    cursor: 'pointer',
+                                    marginTop: '2rem',
+                                    marginLeft: '2rem',
+                                    color: '#222'
                                 }}
                                 onClick={this.hideNav}
                             />
@@ -93,13 +111,13 @@ class NavigationComponent extends Component {
                                 // CLOSED ICON
                                 icon={faBars}
                                 style={{
-                                    zIndex: "799",
-                                    position: "fixed",
-                                    fontSize: "3rem",
-                                    color: "#26bfd4",
-                                    cursor: "pointer",
-                                    marginTop: "2rem",
-                                    marginLeft: "2rem"
+                                    zIndex: '799',
+                                    position: 'fixed',
+                                    fontSize: '3rem',
+                                    color: '#26bfd4',
+                                    cursor: 'pointer',
+                                    marginTop: '2rem',
+                                    marginLeft: '2rem'
                                 }}
                                 onClick={this.hideNav}
                             />
@@ -110,27 +128,27 @@ class NavigationComponent extends Component {
                                     // OPEN NAV STATE
                                     onClick={this.hideNav}
                                     style={{
-                                        position: "fixed",
-                                        top: "0",
-                                        left: "0",
-                                        zIndex: "300",
-                                        height: "100vh",
-                                        width: "100vw",
-                                        backgroundColor: "#26bfd4",
-                                        opacity: ".4",
-                                        cursor: "pointer"
+                                        position: 'fixed',
+                                        top: '0',
+                                        left: '0',
+                                        zIndex: '300',
+                                        height: '100vh',
+                                        width: '100vw',
+                                        backgroundColor: '#26bfd4',
+                                        opacity: '.4',
+                                        cursor: 'pointer'
                                     }}
                                 ></div>
                                 <div
                                     style={{
-                                        fontSize: "2.75rem",
-                                        background: "#dfdfdf",
-                                        textAlign: "center",
-                                        position: "fixed",
-                                        top: "0px",
-                                        left: "0",
-                                        width: "100vw",
-                                        zIndex: "500"
+                                        fontSize: '2.75rem',
+                                        background: '#dfdfdf',
+                                        textAlign: 'center',
+                                        position: 'fixed',
+                                        top: '0px',
+                                        left: '0',
+                                        width: '100vw',
+                                        zIndex: '500'
                                     }}
                                 >
                                     <div className="nav-link-wrapper mobile">
@@ -169,21 +187,21 @@ class NavigationComponent extends Component {
                                         </NavLink>
                                     </div>
 
-                                    {this.props.loggedInStatus === "LOGGED_IN"
+                                    {this.props.loggedInStatus === 'LOGGED_IN'
                                         ? this.dynamicLink(
-                                              "portfolio-manager",
-                                              "Portfolio Manager"
+                                              'portfolio-manager',
+                                              'Portfolio Manager'
                                           )
                                         : null}
                                     <h2
-                                        style={{ marginBottom: "1.5rem" }}
+                                        style={{ marginBottom: '1.5rem' }}
                                         className="mobile"
                                     >
                                         Evan McPheron
                                     </h2>
 
                                     {this.props.loggedInStatus ===
-                                    "LOGGED_IN" ? (
+                                    'LOGGED_IN' ? (
                                         <a
                                             className="logout-btn"
                                             onClick={this.handleSignOut}
@@ -203,27 +221,27 @@ class NavigationComponent extends Component {
                                     // OPEN NAV STATE
                                     onClick={this.hideNav}
                                     style={{
-                                        position: "fixed",
-                                        top: "0",
-                                        left: "0",
-                                        zIndex: "300",
-                                        height: "100vh",
-                                        width: "100vw",
-                                        backgroundColor: "#222222",
-                                        opacity: ".7",
-                                        display: "none"
+                                        position: 'fixed',
+                                        top: '0',
+                                        left: '0',
+                                        zIndex: '300',
+                                        height: '100vh',
+                                        width: '100vw',
+                                        backgroundColor: '#222222',
+                                        opacity: '.7',
+                                        display: 'none'
                                     }}
                                 ></div>
                                 <div
                                     style={{
-                                        fontSize: "2.75rem",
-                                        background: "#dfdfdf",
-                                        textAlign: "center",
-                                        position: "fixed",
-                                        top: "-400px",
-                                        left: "0",
-                                        width: "100vw",
-                                        zIndex: "500"
+                                        fontSize: '2.75rem',
+                                        background: '#dfdfdf',
+                                        textAlign: 'center',
+                                        position: 'fixed',
+                                        top: '-400px',
+                                        left: '0',
+                                        width: '100vw',
+                                        zIndex: '500'
                                     }}
                                 >
                                     <div className="nav-link-wrapper mobile">
@@ -262,10 +280,10 @@ class NavigationComponent extends Component {
                                         </NavLink>
                                     </div>
 
-                                    {this.props.loggedInStatus === "LOGGED_IN"
+                                    {this.props.loggedInStatus === 'LOGGED_IN'
                                         ? this.dynamicLink(
-                                              "portfolio-manager",
-                                              "Portfolio Manager"
+                                              'portfolio-manager',
+                                              'Portfolio Manager'
                                           )
                                         : null}
                                     <h2
@@ -276,7 +294,7 @@ class NavigationComponent extends Component {
                                     </h2>
 
                                     {this.props.loggedInStatus ===
-                                    "LOGGED_IN" ? (
+                                    'LOGGED_IN' ? (
                                         <a
                                             className="logout-btn"
                                             onClick={this.handleSignOut}
@@ -311,19 +329,19 @@ class NavigationComponent extends Component {
                                 <NavLink to="/blog">Blog</NavLink>
                             </div>
 
-                            {this.props.loggedInStatus === "LOGGED_IN"
+                            {this.props.loggedInStatus === 'LOGGED_IN'
                                 ? this.dynamicLink(
-                                      "portfolio-manager",
-                                      "Portfolio Manager"
+                                      'portfolio-manager',
+                                      'Portfolio Manager'
                                   )
                                 : null}
                         </div>
                         <div className="right-side">
-                            <h2 style={{ display: "initial" }}>
+                            <h2 style={{ display: 'initial' }}>
                                 Evan McPheron
                             </h2>
 
-                            {this.props.loggedInStatus === "LOGGED_IN" ? (
+                            {this.props.loggedInStatus === 'LOGGED_IN' ? (
                                 <a
                                     className="logout-btn"
                                     onClick={this.handleSignOut}
