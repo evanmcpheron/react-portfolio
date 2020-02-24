@@ -22,7 +22,12 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import { createBrowserHistory } from "history";
 
-ReactGA.initialize("UA-80246531-2");
+ReactGA.initialize("UA-80246531-3", {
+    debug: true,
+    titleCase: false,
+    gaOptions: {
+      userId: 123
+    }});
 
 const history = createBrowserHistory();
 history.listen(location => {
