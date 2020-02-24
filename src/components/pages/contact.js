@@ -1,12 +1,7 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ContactForm from "../forms/contact-form";
-import ReactGA from 'react-ga';
 
-
-ReactGA.initialize('UA-80246531-2');
-
-ReactGA.pageview('/Contact');
 
 export default function() {
   return (

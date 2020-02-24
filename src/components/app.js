@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import ReactGA from "react-ga";
+import { Route, Switch, Router } from "react-router-dom";
 import axios from "axios";
 import Icons from "../helpers/icons";
 
@@ -19,6 +20,16 @@ import {
     faTwitter,
     faGithub
 } from "@fortawesome/free-brands-svg-icons";
+import { createBrowserHistory } from "history";
+
+ReactGA.initialize("UA-80246531-2");
+
+const history = createBrowserHistory();
+history.listen(location => {
+  ReactGA.set({ page: location.pathname });
+  ReactGA.pageview(location.pathname);
+});
+
 
 export default class App extends Component {
     constructor(props) {
@@ -34,6 +45,10 @@ export default class App extends Component {
         this.handleSuccessfulLogin = this.handleSuccessfulLogin.bind(this);
         this.handleUnsuccessfulLogin = this.handleUnsuccessfulLogin.bind(this);
         this.handleSuccessfulLogout = this.handleSuccessfulLogout.bind(this);
+    }
+
+    componentWillMount() {
+        console.log(window.location.pathname + window.location.search);
     }
 
     handleSuccessfulLogin() {
@@ -116,6 +131,10 @@ export default class App extends Component {
         window.removeEventListener("resize", this.updateDimensions.bind(this));
       }
 
+      componentDidMount() {
+        ReactGA.pageview(window.location.pathname);
+      }
+
     render() {
         const iconStyle = {
             position: "fixed",
@@ -125,8 +144,9 @@ export default class App extends Component {
         };
 
         return (
+
             <div className="container">
-                <Router>
+                <Router history={history}>
                     <div>
                         <NavigationContainer
                             loggedInStatus={this.state.loggedInStatus}
